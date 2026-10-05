@@ -7,7 +7,15 @@
     <!-- Подключаем Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-emerald-500 selection:text-white">
+<!-- Фоновые горы закреплены на всем теле сайта (body) с легким темным затемнением -->
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-emerald-500 selection:text-white relative min-h-screen">
+
+    <!-- Единый фон гор на всю страницу -->
+    <div class="fixed inset-0 z-0">
+        <img src="https://images.unsplash.com/photo-1562601579-599dec564e0e?q=80&w=1920&auto=format&fit=crop" alt="Горы Казбеги Грузия" class="w-full h-full object-cover object-center">
+        <!-- Полупрозрачная темная вуаль, чтобы текст и карточки отлично читались поверх гор -->
+        <div class="absolute inset-0 bg-slate-950/85 backdrop-blur-[3px]"></div>
+    </div>
 
     <!-- Шапка сайта -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/60">
@@ -17,15 +25,15 @@
                     Georgia <span class="text-emerald-500">Peaks</span>
                 </div>
                 <!-- Виджет погоды и даты в Тбилиси -->
-                <div class="hidden md:flex items-center gap-3 text-xs text-slate-400 bg-slate-900/60 px-3 py-1.5 rounded-lg border border-slate-800">
+                <div class="hidden md:flex items-center gap-3 text-xs text-slate-300 bg-slate-900/80 px-3 py-1.5 rounded-lg border border-slate-700/50">
                     <span id="current-date">Тбилиси</span>
-                    <span class="text-slate-600">|</span>
+                    <span class="text-slate-500">|</span>
                     <span id="tbilisi-weather" class="text-emerald-400 font-medium">Загрузка...</span>
                 </div>
             </div>
 
             <!-- ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКОВ -->
-            <div class="flex items-center gap-2 bg-slate-900 p-1.5 rounded-xl border border-slate-800">
+            <div class="flex items-center gap-2 bg-slate-900/90 p-1.5 rounded-xl border border-slate-700/50">
                 <button onclick="changeLanguage('ru')" id="btn-ru" class="px-3 py-1 rounded-lg text-sm font-semibold bg-emerald-600 text-white transition-all">RU</button>
                 <button onclick="changeLanguage('en')" id="btn-en" class="px-3 py-1 rounded-lg text-sm font-semibold text-slate-400 hover:text-white transition-all">EN</button>
                 <button onclick="changeLanguage('pl')" id="btn-pl" class="px-3 py-1 rounded-lg text-sm font-semibold text-slate-400 hover:text-white transition-all">PL</button>
@@ -33,65 +41,58 @@
         </div>
     </header>
 
-    <!-- Главный экран (Hero) с фоном величественных гор Казбеги -->
-    <section class="relative pt-40 pb-28 md:pt-52 md:pb-36 overflow-hidden border-b border-slate-900">
-        <!-- Абсолютное позиционирование фонового фото гор -->
-        <div class="absolute inset-0 w-full h-full z-0">
-            <img src="https://images.unsplash.com/photo-1562601579-599dec564e0e?q=80&w=1920&auto=format&fit=crop" alt="Горы Казбеги Грузия" class="w-full h-full object-cover object-center">
-            <!-- Темный градиент поверх фото, чтобы текст отлично читался -->
-            <div class="absolute inset-0 bg-slate-950/75 backdrop-blur-[2px]"></div>
-        </div>
-
-        <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
+    <!-- Главный экран (Hero) -->
+    <section class="relative pt-44 pb-20 md:pt-56 md:pb-28 z-10">
+        <div class="max-w-7xl mx-auto px-6 text-center">
             <span class="inline-block bg-emerald-500/20 text-emerald-300 font-semibold px-4 py-1.5 rounded-full text-sm mb-6 border border-emerald-500/30 backdrop-blur-md shadow-lg" data-i18n="badge">
                 🏔️ Туры и приключения под ключ
             </span>
             <h1 class="text-4xl md:text-6xl font-black tracking-tight text-white mb-6 max-w-4xl mx-auto leading-tight drop-shadow-lg" data-i18n="hero_title">
                 Откройте для себя настоящий активный отдых в горах Грузии
             </h1>
-            <p class="text-lg md:text-xl text-slate-200 mb-10 max-w-2xl mx-auto drop-shadow" data-i18n="hero_desc">
+            <p class="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl mx-auto drop-shadow" data-i18n="hero_desc">
                 Профессиональные инструкторы, местные гиды и незабываемые эмоции. Выбирайте направление ниже!
             </p>
         </div>
     </section>
 
     <!-- Секция услуг (Каталог) -->
-    <section class="py-20 max-w-7xl mx-auto px-6 relative z-10">
+    <section class="py-10 pb-24 max-w-7xl mx-auto px-6 relative z-10">
         <div class="mb-12">
             <h2 class="text-3xl font-bold text-white mb-2" data-i18n="services_title">Наши направления</h2>
-            <p class="text-slate-400" data-i18n="services_subtitle">Выберите интересующую вас услугу для подробной информации</p>
+            <p class="text-slate-300" data-i18n="services_subtitle">Выберите интересующую вас услугу для подробной информации</p>
         </div>
 
         <!-- СЕТКА УСЛУГ -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
             <!-- 1. Лыжи и сноуборд -->
-            <div class="bg-slate-900/90 backdrop-blur-md rounded-2xl overflow-hidden border border-slate-800 shadow-xl group hover:border-emerald-500/50 transition-all duration-300 flex flex-col justify-between">
+            <div class="bg-slate-900/90 backdrop-blur-md rounded-2xl overflow-hidden border border-slate-700 shadow-2xl group hover:border-emerald-500 transition-all duration-300 flex flex-col justify-between">
                 <div>
                     <div class="h-56 overflow-hidden relative">
                         <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?q=80&w=800&auto=format&fit=crop" alt="Лыжи" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="p-6">
                         <h3 class="text-2xl font-bold text-white mb-2" data-i18n="ski_title">Лыжи и сноуборд</h3>
-                        <p class="text-slate-400 mb-6 text-sm leading-relaxed" data-i18n="ski_desc">Обучение с нуля и улучшение техники катания в Гудаури. Индивидуальный подход для взрослых и детей.</p>
+                        <p class="text-slate-300 mb-6 text-sm leading-relaxed" data-i18n="ski_desc">Обучение с нуля и улучшение техники катания в Гудаури. Индивидуальный подход для взрослых и детей.</p>
                     </div>
                 </div>
                 <div class="px-6 pb-6">
-                    <a href="https://gudauri-ten.vercel.app" target="_blank" class="block text-center bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-3 rounded-xl transition-all shadow-lg shadow-emerald-900/20" data-i18n="btn_details">
+                    <a href="https://gudauri-ten.vercel.app" target="_blank" class="block text-center bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-3 rounded-xl transition-all shadow-lg shadow-emerald-900/30" data-i18n="btn_details">
                         Перейти к услуге
                     </a>
                 </div>
             </div>
 
             <!-- 2. Проводник и местный гид -->
-            <div class="bg-slate-900/90 backdrop-blur-md rounded-2xl overflow-hidden border border-slate-800 shadow-xl group hover:border-emerald-500/50 transition-all duration-300 flex flex-col justify-between">
+            <div class="bg-slate-900/90 backdrop-blur-md rounded-2xl overflow-hidden border border-slate-700 shadow-2xl group hover:border-emerald-500 transition-all duration-300 flex flex-col justify-between">
                 <div>
                     <div class="h-56 overflow-hidden relative">
                         <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=800&auto=format&fit=crop" alt="Гид" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="p-6">
                         <h3 class="text-2xl font-bold text-white mb-2" data-i18n="guide_title">Проводник и местный гид</h3>
-                        <p class="text-slate-400 mb-6 text-sm leading-relaxed" data-i18n="guide_desc">Безопасное сопровождение по лучшим маршрутам Грузии, треккинг и поездки по живописным локациям.</p>
+                        <p class="text-slate-300 mb-6 text-sm leading-relaxed" data-i18n="guide_desc">Безопасное сопровождение по лучшим маршрутам Грузии, треккинг и поездки по живописным локациям.</p>
                     </div>
                 </div>
                 <div class="px-6 pb-6">
@@ -102,14 +103,14 @@
             </div>
 
             <!-- 3. Полеты на параплане -->
-            <div class="bg-slate-900/90 backdrop-blur-md rounded-2xl overflow-hidden border border-slate-800 shadow-xl group hover:border-emerald-500/50 transition-all duration-300 flex flex-col justify-between">
+            <div class="bg-slate-900/90 backdrop-blur-md rounded-2xl overflow-hidden border border-slate-700 shadow-2xl group hover:border-emerald-500 transition-all duration-300 flex flex-col justify-between">
                 <div>
                     <div class="h-56 overflow-hidden relative">
                         <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800&auto=format&fit=crop" alt="Параплан в горах" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="p-6">
                         <h3 class="text-2xl font-bold text-white mb-2" data-i18n="para_title">Полеты на параплане</h3>
-                        <p class="text-slate-400 mb-6 text-sm leading-relaxed" data-i18n="para_desc">Незабываемые полеты в тандеме с пилотами. Увидите грандиозные ущелья с высоты птичьего полета.</p>
+                        <p class="text-slate-300 mb-6 text-sm leading-relaxed" data-i18n="para_desc">Незабываемые полеты в тандеме с пилотами. Увидите грандиозные ущелья с высоты птичьего полета.</p>
                     </div>
                 </div>
                 <div class="px-6 pb-6">
@@ -123,7 +124,7 @@
     </section>
 
     <!-- Подвал -->
-    <footer class="border-t border-slate-900 bg-slate-950 py-10 text-center text-slate-500 text-sm relative z-10">
+    <footer class="border-t border-slate-800/80 bg-slate-950/80 backdrop-blur-md py-10 text-center text-slate-400 text-sm relative z-10">
         <p>© 2026 Georgia Peaks. <span data-i18n="footer_rights">Все права защищены.</span></p>
     </footer>
 
