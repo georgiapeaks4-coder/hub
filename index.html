@@ -23,18 +23,27 @@
                     Georgia <span class="text-emerald-500">Peaks</span>
                 </div>
                 <!-- Виджет погоды и даты в Тбилиси -->
-                <div class="hidden md:flex items-center gap-3 text-xs text-slate-300 bg-slate-900/80 px-3 py-1.5 rounded-lg border border-slate-700/50">
+                <div class="hidden lg:flex items-center gap-3 text-xs text-slate-300 bg-slate-900/80 px-3 py-1.5 rounded-lg border border-slate-700/50">
                     <span id="current-date">Тбилиси</span>
                     <span class="text-slate-500">|</span>
                     <span id="tbilisi-weather" class="text-emerald-400 font-medium">Загрузка...</span>
                 </div>
             </div>
 
-            <!-- ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКОВ -->
-            <div class="flex items-center gap-2 bg-slate-900/90 p-1.5 rounded-xl border border-slate-700/50">
-                <button onclick="changeLanguage('ru')" id="btn-ru" class="px-3 py-1 rounded-lg text-sm font-semibold bg-emerald-600 text-white transition-all">RU</button>
-                <button onclick="changeLanguage('en')" id="btn-en" class="px-3 py-1 rounded-lg text-sm font-semibold text-slate-400 hover:text-white transition-all">EN</button>
-                <button onclick="changeLanguage('pl')" id="btn-pl" class="px-3 py-1 rounded-lg text-sm font-semibold text-slate-400 hover:text-white transition-all">PL</button>
+            <!-- Правая часть шапки: Кнопка WhatsApp и языки -->
+            <div class="flex items-center gap-4">
+                <!-- Кнопка связи в WhatsApp -->
+                <a href="https://wa.me/48515979713" target="_blank" class="hidden sm:flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-xl text-sm font-semibold transition-all shadow-lg shadow-emerald-900/40">
+                    <span>💬</span>
+                    <span data-i18n="whatsapp_btn">Написать в WhatsApp</span>
+                </a>
+
+                <!-- ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКОВ -->
+                <div class="flex items-center gap-1 bg-slate-900/90 p-1.5 rounded-xl border border-slate-700/50">
+                    <button onclick="changeLanguage('ru')" id="btn-ru" class="px-2.5 py-1 rounded-lg text-sm font-semibold bg-emerald-600 text-white transition-all">RU</button>
+                    <button onclick="changeLanguage('en')" id="btn-en" class="px-2.5 py-1 rounded-lg text-sm font-semibold text-slate-400 hover:text-white transition-all">EN</button>
+                    <button onclick="changeLanguage('pl')" id="btn-pl" class="px-2.5 py-1 rounded-lg text-sm font-semibold text-slate-400 hover:text-white transition-all">PL</button>
+                </div>
             </div>
         </div>
     </header>
@@ -106,7 +115,7 @@
                     <div class="h-56 overflow-hidden relative">
                         <img src="images/paraglide.jpg" alt="Параплан в горах" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="p-6">
+                    <div class="p-6"> дубликат
                         <h3 class="text-2xl font-bold text-white mb-2" data-i18n="para_title">Полеты на параплане</h3>
                         <p class="text-slate-300 mb-6 text-sm leading-relaxed" data-i18n="para_desc">Незабываемые полеты в тандеме с пилотами. Увидите грандиозные ущелья с высоты птичьего полета.</p>
                     </div>
@@ -123,11 +132,12 @@
 
     <!-- Подвал -->
     <footer class="border-t border-slate-800/80 bg-slate-950/70 backdrop-blur-md py-10 text-center text-slate-400 text-sm">
-        <p>© 2026 Georgia Peaks. <span data-i18n="footer_rights">Все права защищены.</span></p>
+        <p>© 2026 Georgia Peaks. <span data-i18n="footer_rights">Все права защищены.</span> • Email: georgiapeaks4@gmail.com</p>
     </footer>
 
     <!-- Подключаем наш файл со скриптами -->
     <script src="js/main.js"></script>
 </body>
 </html>
+
 
