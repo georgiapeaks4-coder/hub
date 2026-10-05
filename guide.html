@@ -4,18 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Грузия: Туры и Путеводитель</title>
+    <!-- Стили Flatpickr -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <!-- Общие стили хаба -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- Локальные стили сетки туров -->
     <link rel="stylesheet" href="css/guide.css">
 </head>
 <body>
     <div class="page-background"></div>
     <div class="page-overlay"></div>
 
+    <!-- Шапка идентичная главному хабу -->
     <header class="site-header">
         <div class="header-left">
             <span class="logo">GEORGIA PEAKS</span>
-            <span class="weather-widget">Тбилиси • 5 октября 2026 г. | ☀️ 13°C</span>
+            <span class="weather-widget">Тбилиси • 5 октября 2026 г. | ☀️️ 13°C</span>
         </div>
         <div class="header-right">
             <a href="https://wa.me/+48515979713" target="_blank" class="wa-header-btn">
@@ -29,57 +33,67 @@
         </div>
     </header>
 
-    <main class="main-container" style="padding: 20px; max-width: 1200px; margin: 0 auto; position: relative; z-index: 1;">
-        <div style="margin-bottom: 30px;">
-            <h1 style="font-size: 32px; margin: 0 0 10px 0; color: #f1f5f9;">Авторские туры по Грузии</h1>
-            <p style="color: #94a3b8; margin: 0; font-size: 16px;">Выберите направление, дату и забронируйте незабываемую поездку в WhatsApp или на почту: georgiapeaks4@gmail.com</p>
+    <!-- Основной контент -->
+    <main class="main-container">
+        <div class="page-header-text">
+            <h1>Авторские туры по Грузии</h1>
+            <p>Выберите направление, дату и забронируйте незабываемую поездку в WhatsApp или на почту: georgiapeaks4@gmail.com</p>
         </div>
 
-        <!-- Сетка карточек -->
+        <!-- Сетка карточек с правильным путем к папке images/guide/ -->
         <div class="destinations-grid" id="destinations-grid">
             <div class="destination-card">
                 <div class="card-img-wrapper">
-                    <img src="images/tbilisi.jpg" alt="Тбилиси">
+                    <img src="images/guide/tbilisi.jpg" alt="Тбилиси">
                 </div>
                 <div class="card-body">
                     <h3>Тбилиси</h3>
-                    <p>Серные бани, старый город, серпантины улиц.</p>
-                    <button class="select-btn">Выбрать тур</button>
+                    <p>Серные бани, старый город, серпантины улиц и атмосфера вечного праздника.</p>
+                    <a href="https://wa.me/+48515979713" target="_blank" class="select-btn">Выбрать тур</a>
                 </div>
             </div>
             <div class="destination-card">
                 <div class="card-img-wrapper">
-                    <img src="images/mtskheta.jpg" alt="Мцхета">
+                    <img src="images/guide/mtskheta.jpg" alt="Мцхета">
                 </div>
                 <div class="card-body">
                     <h3>Мцхета</h3>
-                    <p>Древняя столица, слияние рек, виды у храма Джвари.</p>
-                    <button class="select-btn">Выбрать тур</button>
+                    <p>Древняя столица, слияние рек, виды с холма у храма Джвари.</p>
+                    <a href="https://wa.me/+48515979713" target="_blank" class="select-btn">Выбрать тур</a>
                 </div>
             </div>
             <div class="destination-card">
                 <div class="card-img-wrapper">
-                    <img src="images/kutaisi.jpg" alt="Кутаиси">
+                    <img src="images/guide/kutaisi.jpg" alt="Кутаиси">
                 </div>
                 <div class="card-body">
                     <h3>Кутаиси</h3>
-                    <p>Колоритный южный город, каньоны и пещеры.</p>
-                    <button class="select-btn">Выбрать тур</button>
+                    <p>Колоритный южный город, каньоны и подземные пещеры Прометея.</p>
+                    <a href="https://wa.me/+48515979713" target="_blank" class="select-btn">Выбрать тур</a>
                 </div>
             </div>
             <div class="destination-card">
                 <div class="card-img-wrapper">
-                    <img src="images/borjomi.jpg" alt="Боржоми">
+                    <img src="images/guide/borjomi.jpg" alt="Боржоми">
                 </div>
                 <div class="card-body">
                     <h3>Боржоми</h3>
-                    <p>Хвойный воздух, прохлада ущелья и минералка.</p>
-                    <button class="select-btn">Выбрать тур</button>
+                    <p>Хвойный воздух, прохлада ущелья и та самая минералка из источника.</p>
+                    <a href="https://wa.me/+48515979713" target="_blank" class="select-btn">Выбрать тур</a>
                 </div>
             </div>
         </div>
     </main>
 
+    <!-- Модальное окно -->
+    <div id="tour-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span id="close-modal" style="position: absolute; top: 15px; right: 20px; font-size: 24px; cursor: pointer; color: #fff;">&times;</span>
+            <div id="modal-body-content"></div>
+        </div>
+    </div>
+
+    <!-- Скрипты -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="js/guide.js"></script>
 </body>
