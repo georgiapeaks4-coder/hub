@@ -124,7 +124,7 @@ const destinations = [
     },
     {
         id: "gudauri",
-        names: { ru: "⛷️ Гудаури", en: "⛷️ Gudauri", pl: "⛷️ Gudauri" },
+        names: { ru: "⛷️ Гудаури", en: "⛷️️ Gudauri", pl: "⛷️ Gudauri" },
         descs: {
             ru: "Грандиозные панорамы Кавказа и чистый горный адреналин.",
             en: "Grand Caucasian panoramas and pure mountain adrenaline.",
@@ -168,18 +168,15 @@ const destinations = [
 let currentLang = 'ru';
 let selectedDestinationId = null;
 let selectedDate = '';
+let currentImageIndex = 0;
 
 document.addEventListener("DOMContentLoaded", () => {
     const grid = document.getElementById('destinationsGrid');
     const modal = document.getElementById('bookingModal');
     const closeModal = document.getElementById('closeModal');
 
-    if (!grid) {
-        console.error("Элемент destinationsGrid не найден в DOM!");
-        return;
-    }
+    if (!grid) return;
 
-    // Инициализация календаря Flatpickr
     let calendar = flatpickr("#tourDate", {
         locale: "ru",
         minDate: "today",
@@ -227,17 +224,63 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function openModal(item) {
         selectedDestinationId = item.id;
+        currentImageIndex = 0;
+        
         document.getElementById('modalTitle').innerText = item.names[currentLang];
         document.getElementById('modalDesc').innerText = item.descs[currentLang];
         
         const galleryContainer = document.getElementById('modalGallery');
         galleryContainer.innerHTML = '';
-        item.images.forEach(imgSrc => {
-            const img = document.createElement('img');
-            img.src = imgSrc;
-            img.alt = item.names[currentLang];
-            galleryContainer.appendChild(img);
-        });
+
+        if (item.images && item.images.length > 0) {
+            const sliderWrapper = document.createElement('div');
+            sliderWrapper.className = 'modal-slider';
+
+            const mainImg = document.createElement('img');
+            mainImg.className = 'slider-main-img';
+            mainImg.src = item.images[currentImageIndex];
+            
+            // Защита от битых картинок
+            mainImg.onerror = () => {
+                mainImg.src = 'images/guide/tbilisi.jpg'; // Запасное фото, если вдруг файл не найден
+            };
+
+            sliderWrapper.appendChild(mainImg);
+
+            if (item.images.length > 1) {
+                const prevBtn = document.createElement('button');
+                prevBtn.className = 'slider-btn prev-btn';
+                prevBtn.innerHTML = '&#10094;';
+                
+                const nextBtn = document.createElement('button');
+                nextBtn.className = 'slider-btn next-btn';
+                nextBtn.innerHTML = '&#10095;';
+
+                const counter = document.createElement('div');
+                counter.className = 'slider-counter';
+                counter.innerText = `${currentImageIndex + 1} / ${item.images.length}`;
+
+                prevBtn.onclick = (e) => {
+                    e.stopPropagation();
+                    currentImageIndex = (currentImageIndex - 1 + item.images.length) % item.images.length;
+                    mainImg.src = item.images[currentImageIndex];
+                    counter.innerText = `${currentImageIndex + 1} / ${item.images.length}`;
+                };
+
+                nextBtn.onclick = (e) => {
+                    e.stopPropagation();
+                    currentImageIndex = (currentImageIndex + 1) % item.images.length;
+                    mainImg.src = item.images[currentImageIndex];
+                    counter.innerText = `${currentImageIndex + 1} / ${item.images.length}`;
+                };
+
+                sliderWrapper.appendChild(prevBtn);
+                sliderWrapper.appendChild(nextBtn);
+                sliderWrapper.appendChild(counter);
+            }
+
+            galleryContainer.appendChild(sliderWrapper);
+        }
 
         modal.style.display = 'flex';
     }
