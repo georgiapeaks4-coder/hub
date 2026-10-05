@@ -1,1 +1,32 @@
+/* Базовые настройки */
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, sans-serif;
+    color: #f1f5f9;
+    background-color: #020617;
+}
+
+/* Фиксированный фон гор на всю страницу */
+.page-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../images/kazbegi-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: -2;
+}
+
+/* Полупрозрачное затемнение поверх гор */
+.page-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(2, 6, 23, 0.82);
+    z-index: -1;
+}
 
