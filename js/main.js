@@ -6,9 +6,9 @@ async function loadTbilisiInfo() {
     if (dateEl) dateEl.textContent = `Тбилиси • ${today}`;
 
     try {
-        const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=41.7151&current_weather=true');
+        const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=41.7151&longitude=44.8271&current_weather=true');
         const data = await response.json();
-        if(data && data.current_weather) {
+        if (data && data.current_weather) {
             const temp = Math.round(data.current_weather.temperature);
             const weatherEl = document.getElementById('tbilisi-weather');
             if (weatherEl) weatherEl.textContent = `🌤️ ${temp}°C`;
@@ -36,6 +36,7 @@ const translations = {
         para_desc: "Незабываемые полеты в тандеме с пилотами. Увидите грандиозные ущелья с высоты птичьего полета.",
         btn_details: "Перейти к услуге",
         btn_soon: "Скоро открытие",
+        whatsapp_btn: "Написать в WhatsApp",
         footer_rights: "Все права защищены."
     },
     en: {
@@ -52,6 +53,7 @@ const translations = {
         para_desc: "Unforgettable tandem flights with experienced pilots. See grand mountain gorges from a bird's eye view.",
         btn_details: "Go to service",
         btn_soon: "Coming soon",
+        whatsapp_btn: "WhatsApp Chat",
         footer_rights: "All rights reserved."
     },
     pl: {
@@ -68,6 +70,7 @@ const translations = {
         para_desc: "Niezapomniane loty w tandemie z doświadczonymi pilotami. Zobacz wspaniałe wąwozy górskie z lotu ptaka.",
         btn_details: "Przejdź do usługi",
         btn_soon: "Wkrótce otwarte",
+        whatsapp_btn: "Napisz na WhatsApp",
         footer_rights: "Wszelki prawa zastrzeżone."
     }
 };
