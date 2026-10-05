@@ -6,19 +6,37 @@
     <title>Georgia Peaks - Активный отдых в горах</title>
     <!-- Подключаем Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Жесткая фиксация фоновой картинки на весь экран */
+        .mountain-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: -2;
+        }
+        /* Затемнение поверх картинки, чтобы текст был контрастным */
+        .bg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(2, 6, 23, 0.82);
+            z-index: -1;
+        }
+    </style>
 </head>
-<!-- Фоновые горы закреплены на всем теле сайта (body) с легким темным затемнением -->
-<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-emerald-500 selection:text-white relative min-h-screen">
+<body class="text-slate-100 font-sans antialiased selection:bg-emerald-500 selection:text-white min-h-screen">
 
-    <!-- Единый фон гор на всю страницу -->
-    <div class="fixed inset-0 z-0">
-        <img src="https://images.unsplash.com/photo-1562601579-599dec564e0e?q=80&w=1920&auto=format&fit=crop" alt="Горы Казбеги Грузия" class="w-full h-full object-cover object-center">
-        <!-- Полупрозрачная темная вуаль, чтобы текст и карточки отлично читались поверх гор -->
-        <div class="absolute inset-0 bg-slate-950/85 backdrop-blur-[3px]"></div>
-    </div>
+    <!-- ФОН ГОР НА ВСЮ СТРАНИЦУ -->
+    <img src="https://images.unsplash.com/photo-1562601579-599dec564e0e?q=80&w=1920&auto=format&fit=crop" alt="Горы Казбеги Грузия" class="mountain-bg">
+    <div class="bg-overlay"></div>
 
     <!-- Шапка сайта -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/60">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-slate-950/70 backdrop-blur-md border-b border-slate-800/60">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <div class="flex items-center gap-6">
                 <div class="text-xl font-black tracking-wider uppercase text-white">
@@ -42,7 +60,7 @@
     </header>
 
     <!-- Главный экран (Hero) -->
-    <section class="relative pt-44 pb-20 md:pt-56 md:pb-28 z-10">
+    <section class="relative pt-44 pb-20 md:pt-56 md:pb-28">
         <div class="max-w-7xl mx-auto px-6 text-center">
             <span class="inline-block bg-emerald-500/20 text-emerald-300 font-semibold px-4 py-1.5 rounded-full text-sm mb-6 border border-emerald-500/30 backdrop-blur-md shadow-lg" data-i18n="badge">
                 🏔️ Туры и приключения под ключ
@@ -57,7 +75,7 @@
     </section>
 
     <!-- Секция услуг (Каталог) -->
-    <section class="py-10 pb-24 max-w-7xl mx-auto px-6 relative z-10">
+    <section class="py-10 pb-24 max-w-7xl mx-auto px-6">
         <div class="mb-12">
             <h2 class="text-3xl font-bold text-white mb-2" data-i18n="services_title">Наши направления</h2>
             <p class="text-slate-300" data-i18n="services_subtitle">Выберите интересующую вас услугу для подробной информации</p>
@@ -67,7 +85,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
             <!-- 1. Лыжи и сноуборд -->
-            <div class="bg-slate-900/90 backdrop-blur-md rounded-2xl overflow-hidden border border-slate-700 shadow-2xl group hover:border-emerald-500 transition-all duration-300 flex flex-col justify-between">
+            <div class="bg-slate-900/85 backdrop-blur-md rounded-2xl overflow-hidden border border-slate-700/80 shadow-2xl group hover:border-emerald-500 transition-all duration-300 flex flex-col justify-between">
                 <div>
                     <div class="h-56 overflow-hidden relative">
                         <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?q=80&w=800&auto=format&fit=crop" alt="Лыжи" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
@@ -85,7 +103,7 @@
             </div>
 
             <!-- 2. Проводник и местный гид -->
-            <div class="bg-slate-900/90 backdrop-blur-md rounded-2xl overflow-hidden border border-slate-700 shadow-2xl group hover:border-emerald-500 transition-all duration-300 flex flex-col justify-between">
+            <div class="bg-slate-900/85 backdrop-blur-md rounded-2xl overflow-hidden border border-slate-700/80 shadow-2xl group hover:border-emerald-500 transition-all duration-300 flex flex-col justify-between">
                 <div>
                     <div class="h-56 overflow-hidden relative">
                         <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=800&auto=format&fit=crop" alt="Гид" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
@@ -103,7 +121,7 @@
             </div>
 
             <!-- 3. Полеты на параплане -->
-            <div class="bg-slate-900/90 backdrop-blur-md rounded-2xl overflow-hidden border border-slate-700 shadow-2xl group hover:border-emerald-500 transition-all duration-300 flex flex-col justify-between">
+            <div class="bg-slate-900/85 backdrop-blur-md rounded-2xl overflow-hidden border border-slate-700/80 shadow-2xl group hover:border-emerald-500 transition-all duration-300 flex flex-col justify-between">
                 <div>
                     <div class="h-56 overflow-hidden relative">
                         <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800&auto=format&fit=crop" alt="Параплан в горах" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
@@ -124,7 +142,7 @@
     </section>
 
     <!-- Подвал -->
-    <footer class="border-t border-slate-800/80 bg-slate-950/80 backdrop-blur-md py-10 text-center text-slate-400 text-sm relative z-10">
+    <footer class="border-t border-slate-800/80 bg-slate-950/70 backdrop-blur-md py-10 text-center text-slate-400 text-sm">
         <p>© 2026 Georgia Peaks. <span data-i18n="footer_rights">Все права защищены.</span></p>
     </footer>
 
@@ -219,3 +237,4 @@
     </script>
 </body>
 </html>
+
