@@ -14,7 +14,6 @@
 <body>
     <div class="page-background"></div>
     <div class="page-overlay"></div>
-    
 
     <!-- Шапка идентичная основному хабу -->
     <header class="site-header">
@@ -23,7 +22,7 @@
             <span class="weather-widget">Тбилиси • 5 октября 2026 г. | ☀️ 13°C</span>
         </div>
         <div class="header-right">
-            <a href="https://wa.me/+48515979713" target="_blank" class="wa-header-btn">
+            <a href="https://wa.me/+4851597913" target="_blank" class="wa-header-btn">
                 <span>Написать в WhatsApp</span>
             </a>
             <div class="lang-switcher">
@@ -35,47 +34,26 @@
     </header>
 
     <!-- Заголовок страницы туров -->
-    <section class="guide-hero">
-        <div class="badge">🌲 Туры и приключения под ключ</div>
-        <h1 id="headerTitle">Авторские туры по Грузии</h1>
-        <p id="headerSubtitle">Выберите направление, дату и забронируйте незабываемую поездку в WhatsApp</p>
-    </section>
+    <main class="main-container" style="padding: 20px; max-width: 1200px; margin: 0 auto;">
+        <div style="margin-bottom: 30px;">
+            <h1 style="font-size: 32px; margin: 0 0 10px 0;">Авторские туры по Грузии</h1>
+            <p style="color: #94a3b8; margin: 0; font-size: 16px;">Выберите направление, дату и забронируйте незабываемую поездку в WhatsApp</p>
+        </div>
 
-    <main class="container">
-        <div class="destinations-grid" id="destinationsGrid"></div>
+        <!-- Сетка карточек -->
+        <div class="destinations-grid" id="destinations-grid"></div>
     </main>
 
-    <!-- Модальное окно со слайдером -->
-    <div id="bookingModal" class="modal" style="display: none;">
+    <!-- Модальное окно -->
+    <div id="tour-modal" class="modal" style="display: none;">
         <div class="modal-content">
-            <span class="close-btn" id="closeModal">&times;</span>
-            <h2 id="modalTitle">Название направления</h2>
-            
-            <!-- Контейнер слайдера для фото -->
-            <div class="modal-gallery" id="modalGallery"></div>
-
-            <p id="modalDesc" class="modal-desc"></p>
-            
-            <div class="price-notice">
-                <span id="priceText">💰 Стоимость: <strong>от 350₾ / $130</strong> за тур</span>
-                <p id="priceDesc">Цена зависит от состава группы и маршрута. Обсудим детали и пожелания индивидуально!</p>
-            </div>
-
-            <div class="booking-form">
-                <label for="tourDate" id="dateLabel">Выберите дату тура:</label>
-                <input type="text" id="tourDate" placeholder="Нажмите, чтобы выбрать дату..." readonly>
-                
-                <button id="whatsappBtn" class="whatsapp-btn">
-                    Забронировать в WhatsApp 📱
-                </button>
-            </div>
+            <span id="close-modal" style="position: absolute; top: 15px; right: 20px; font-size: 24px; cursor: pointer; color: #fff;">&times;</span>
+            <div id="modal-body-content"></div>
         </div>
     </div>
 
     <!-- Скрипты -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ru.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/pl.js"></script>
     <script src="js/guide.js"></script>
 </body>
 </html>
