@@ -38,7 +38,7 @@ const uiTexts = {
     }
 };
 
-// База данных направлений на трех языках с фото из GitHub
+// База данных направлений
 const destinations = [
     {
         id: "tbilisi",
@@ -57,7 +57,7 @@ const destinations = [
     },
     {
         id: "mtskheta",
-        names: { ru: "🏛️ Мцхета", en: "🏛️ Mtskheta", pl: "🏛️ Mccheta" },
+        names: { ru: "🏛️ Мцхета", en: "🏛️ Mtskheta", pl: "🏛️ Mtskheta" },
         descs: {
             ru: "Древняя столица, слияние рек и виды с холма у храма Джвари.",
             en: "Ancient capital, river confluence, and views from the hill near Jvari monastery.",
@@ -84,7 +84,7 @@ const destinations = [
     },
     {
         id: "borjomi",
-        names: { ru: "🌲 Боржоми", en: "🌲 Borjomi", pl: "🌲 Bordżomi" },
+        names: { ru: "🌲 Боржоми", en: "🌲 Borjomi", pl: "🌲 Borjomi" },
         descs: {
             ru: "Хвойный воздух, прохлада ущелья и та самая минералка из источника.",
             en: "Coniferous air, gorge coolness, and that famous mineral water from the spring.",
@@ -111,7 +111,7 @@ const destinations = [
     },
     {
         id: "racha",
-        names: { ru: "🏔️ Рача", en: "🏔️ Racha", pl: "🏔️ Racza" },
+        names: { ru: "🏔️ Рача", en: "🏔️ Racha", pl: "🏔️ Racha" },
         descs: {
             ru: "Дикие горы, альпийские луга и родина легендарной Хванчкары.",
             en: "Wild mountains, alpine meadows, and the homeland of legendary Khvanchkara.",
@@ -138,7 +138,7 @@ const destinations = [
     },
     {
         id: "vardzia",
-        names: { ru: "🧗 Вардзия", en: "🧗 Vardzia", pl: "🧗 Wardzia" },
+        names: { ru: "🧗 Вардзия", en: "🧗 Vardzia", pl: "🧗 Vardzia" },
         descs: {
             ru: "Монументальный пещерный город-монастырь прямо в отвесной скале.",
             en: "Monumental cave monastery town right in a sheer cliff.",
@@ -169,109 +169,111 @@ let currentLang = 'ru';
 let selectedDestinationId = null;
 let selectedDate = '';
 
-const grid = document.getElementById('destinationsGrid');
-const modal = document.getElementById('bookingModal');
-const closeModal = document.getElementById('closeModal');
+document.addEventListener("DOMContentLoaded", () => {
+    const grid = document.getElementById('destinationsGrid');
+    const modal = document.getElementById('bookingModal');
+    const closeModal = document.getElementById('closeModal');
 
-// Инициализация календаря Flatpickr
-let calendar = flatpickr("#tourDate", {
-    locale: "ru",
-    minDate: "today",
-    dateFormat: "Y-m-d",
-    onChange: function(selectedDates, dateStr) {
-        selectedDate = dateStr;
-    }
-});
-
-// Рендер интерфейса
-function renderApp() {
-    document.getElementById('headerTitle').innerText = uiTexts[currentLang].title;
-    document.getElementById('headerSubtitle').innerText = uiTexts[currentLang].subtitle;
-    document.getElementById('priceText').innerHTML = uiTexts[currentLang].price;
-    document.getElementById('priceDesc').innerText = uiTexts[currentLang].priceDesc;
-    document.getElementById('dateLabel').innerText = uiTexts[currentLang].dateLabel;
-    document.getElementById('tourDate').placeholder = uiTexts[currentLang].datePlaceholder;
-    document.getElementById('whatsappBtn').innerText = uiTexts[currentLang].waBtn;
-
-    grid.innerHTML = '';
-    destinations.forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'destination-card';
-        card.innerHTML = `
-            <div class="card-img-wrapper">
-                <img src="${item.images[0]}" alt="${item.names[currentLang]}" loading="lazy">
-            </div>
-            <div class="card-body">
-                <h3>${item.names[currentLang]}</h3>
-                <p>${item.descs[currentLang]}</p>
-                <button class="select-btn">${uiTexts[currentLang].selectBtn}</button>
-            </div>
-        `;
-        card.addEventListener('click', () => openModal(item));
-        grid.appendChild(card);
-    });
-
-    if (selectedDestinationId) {
-        const activeItem = destinations.find(d => d.id === selectedDestinationId);
-        if (activeItem) {
-            document.getElementById('modalTitle').innerText = activeItem.names[currentLang];
-            document.getElementById('modalDesc').innerText = activeItem.descs[currentLang];
-        }
-    }
-}
-
-// Открытие модалки
-function openModal(item) {
-    selectedDestinationId = item.id;
-    document.getElementById('modalTitle').innerText = item.names[currentLang];
-    document.getElementById('modalDesc').innerText = item.descs[currentLang];
-    
-    const galleryContainer = document.getElementById('modalGallery');
-    galleryContainer.innerHTML = '';
-    item.images.forEach(imgSrc => {
-        const img = document.createElement('img');
-        img.src = imgSrc;
-        img.alt = item.names[currentLang];
-        galleryContainer.appendChild(img);
-    });
-
-    modal.style.display = 'flex';
-}
-
-closeModal.addEventListener('click', () => { modal.style.display = 'none'; });
-window.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
-
-// Переключение языков
-document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-        e.target.classList.add('active');
-        currentLang = e.target.getAttribute('data-lang');
-        
-        let fpLocale = currentLang === 'pl' ? 'pl' : (currentLang === 'ru' ? 'ru' : 'default');
-        calendar.set('locale', fpLocale);
-
-        renderApp();
-    });
-});
-
-// Отправка в WhatsApp
-document.getElementById('whatsappBtn').addEventListener('click', () => {
-    if (!selectedDate) {
-        alert(uiTexts[currentLang].alertDate);
+    if (!grid) {
+        console.error("Элемент destinationsGrid не найден в DOM!");
         return;
     }
 
-    const activeItem = destinations.find(d => d.id === selectedDestinationId);
-    const destName = activeItem ? activeItem.names[currentLang] : '';
-    
-    let msgTemplate = uiTexts[currentLang].waMessage;
-    const text = msgTemplate.replace('{dest}', destName).replace('{date}', selectedDate);
+    // Инициализация календаря Flatpickr
+    let calendar = flatpickr("#tourDate", {
+        locale: "ru",
+        minDate: "today",
+        dateFormat: "Y-m-d",
+        onChange: function(selectedDates, dateStr) {
+            selectedDate = dateStr;
+        }
+    });
 
-    const phone = "995000000000"; // Замените на ваш реальный номер WhatsApp (без плюса)
-    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
+    function renderApp() {
+        document.getElementById('headerTitle').innerText = uiTexts[currentLang].title;
+        document.getElementById('headerSubtitle').innerText = uiTexts[currentLang].subtitle;
+        document.getElementById('priceText').innerHTML = uiTexts[currentLang].price;
+        document.getElementById('priceDesc').innerText = uiTexts[currentLang].priceDesc;
+        document.getElementById('dateLabel').innerText = uiTexts[currentLang].dateLabel;
+        document.getElementById('tourDate').placeholder = uiTexts[currentLang].datePlaceholder;
+        document.getElementById('whatsappBtn').innerText = uiTexts[currentLang].waBtn;
+
+        grid.innerHTML = '';
+        destinations.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'destination-card';
+            card.innerHTML = `
+                <div class="card-img-wrapper">
+                    <img src="${item.images[0]}" alt="${item.names[currentLang]}" loading="lazy">
+                </div>
+                <div class="card-body">
+                    <h3>${item.names[currentLang]}</h3>
+                    <p>${item.descs[currentLang]}</p>
+                    <button class="select-btn">${uiTexts[currentLang].selectBtn}</button>
+                </div>
+            `;
+            card.addEventListener('click', () => openModal(item));
+            grid.appendChild(card);
+        });
+
+        if (selectedDestinationId) {
+            const activeItem = destinations.find(d => d.id === selectedDestinationId);
+            if (activeItem) {
+                document.getElementById('modalTitle').innerText = activeItem.names[currentLang];
+                document.getElementById('modalDesc').innerText = activeItem.descs[currentLang];
+            }
+        }
+    }
+
+    function openModal(item) {
+        selectedDestinationId = item.id;
+        document.getElementById('modalTitle').innerText = item.names[currentLang];
+        document.getElementById('modalDesc').innerText = item.descs[currentLang];
+        
+        const galleryContainer = document.getElementById('modalGallery');
+        galleryContainer.innerHTML = '';
+        item.images.forEach(imgSrc => {
+            const img = document.createElement('img');
+            img.src = imgSrc;
+            img.alt = item.names[currentLang];
+            galleryContainer.appendChild(img);
+        });
+
+        modal.style.display = 'flex';
+    }
+
+    closeModal.addEventListener('click', () => { modal.style.display = 'none'; });
+    window.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            e.target.classList.add('active');
+            currentLang = e.target.getAttribute('data-lang');
+            
+            let fpLocale = currentLang === 'pl' ? 'pl' : (currentLang === 'ru' ? 'ru' : 'default');
+            calendar.set('locale', fpLocale);
+
+            renderApp();
+        });
+    });
+
+    document.getElementById('whatsappBtn').addEventListener('click', () => {
+        if (!selectedDate) {
+            alert(uiTexts[currentLang].alertDate);
+            return;
+        }
+
+        const activeItem = destinations.find(d => d.id === selectedDestinationId);
+        const destName = activeItem ? activeItem.names[currentLang] : '';
+        
+        let msgTemplate = uiTexts[currentLang].waMessage;
+        const text = msgTemplate.replace('{dest}', destName).replace('{date}', selectedDate);
+
+        const phone = "995000000000"; 
+        window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
+    });
+
+    renderApp();
 });
-
-// Запуск
-renderApp();
 
