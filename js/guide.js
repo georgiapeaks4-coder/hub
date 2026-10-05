@@ -124,7 +124,7 @@ const destinations = [
     },
     {
         id: "gudauri",
-        names: { ru: "⛷️ Гудаури", en: "⛷️️ Gudauri", pl: "⛷️ Gudauri" },
+        names: { ru: "⛷️️ Гудаури", en: "⛷ Gudauri", pl: "⛷️ Gudauri" },
         descs: {
             ru: "Грандиозные панорамы Кавказа и чистый горный адреналин.",
             en: "Grand Caucasian panoramas and pure mountain adrenaline.",
@@ -233,32 +233,73 @@ document.addEventListener("DOMContentLoaded", () => {
         galleryContainer.innerHTML = '';
 
         if (item.images && item.images.length > 0) {
+            // Контейнер слайдера с жестким черным фоном и размером
             const sliderWrapper = document.createElement('div');
-            sliderWrapper.className = 'modal-slider';
+            sliderWrapper.style.position = 'relative';
+            sliderWrapper.style.width = '100%';
+            sliderWrapper.style.height = '260px';
+            sliderWrapper.style.backgroundColor = '#000000';
+            sliderWrapper.style.borderRadius = '12px';
+            sliderWrapper.style.overflow = 'hidden';
+            sliderWrapper.style.display = 'flex';
+            sliderWrapper.style.alignItems = 'center';
+            sliderWrapper.style.justifyContent = 'center';
+            sliderWrapper.style.marginBottom = '15px';
 
+            // Главная картинка, которая строго заполнит блок и не станет огромной
             const mainImg = document.createElement('img');
-            mainImg.className = 'slider-main-img';
             mainImg.src = item.images[currentImageIndex];
+            mainImg.style.width = '100%';
+            mainImg.style.height = '100%';
+            mainImg.style.objectFit = 'cover';
             
-            // Защита от битых картинок
             mainImg.onerror = () => {
-                mainImg.src = 'images/guide/tbilisi.jpg'; // Запасное фото, если вдруг файл не найден
+                mainImg.src = item.images[0];
             };
 
             sliderWrapper.appendChild(mainImg);
 
+            // Если картинок несколько — добавляем стрелочки и счетчик
             if (item.images.length > 1) {
                 const prevBtn = document.createElement('button');
-                prevBtn.className = 'slider-btn prev-btn';
                 prevBtn.innerHTML = '&#10094;';
-                
+                prevBtn.style.position = 'absolute';
+                prevBtn.style.left = '12px';
+                prevBtn.style.top = '50%';
+                prevBtn.style.transform = 'translateY(-50%)';
+                prevBtn.style.background = 'rgba(0, 0, 0, 0.6)';
+                prevBtn.style.color = '#fff';
+                prevBtn.style.border = 'none';
+                prevBtn.style.padding = '8px 12px';
+                prevBtn.style.cursor = 'pointer';
+                prevBtn.style.borderRadius = '50%';
+                prevBtn.style.zIndex = '5';
+
                 const nextBtn = document.createElement('button');
-                nextBtn.className = 'slider-btn next-btn';
                 nextBtn.innerHTML = '&#10095;';
+                nextBtn.style.position = 'absolute';
+                nextBtn.style.right = '12px';
+                nextBtn.style.top = '50%';
+                nextBtn.style.transform = 'translateY(-50%)';
+                nextBtn.style.background = 'rgba(0, 0, 0, 0.6)';
+                nextBtn.style.color = '#fff';
+                nextBtn.style.border = 'none';
+                nextBtn.style.padding = '8px 12px';
+                nextBtn.style.cursor = 'pointer';
+                nextBtn.style.borderRadius = '50%';
+                nextBtn.style.zIndex = '5';
 
                 const counter = document.createElement('div');
-                counter.className = 'slider-counter';
                 counter.innerText = `${currentImageIndex + 1} / ${item.images.length}`;
+                counter.style.position = 'absolute';
+                counter.style.bottom = '10px';
+                counter.style.right = '12px';
+                counter.style.background = 'rgba(0, 0, 0, 0.7)';
+                counter.style.color = '#fff';
+                counter.style.padding = '4px 8px';
+                counter.style.fontSize = '12px';
+                counter.style.borderRadius = '4px';
+                counter.style.zIndex = '5';
 
                 prevBtn.onclick = (e) => {
                     e.stopPropagation();
