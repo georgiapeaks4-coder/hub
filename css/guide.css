@@ -1,4 +1,4 @@
-/* Базовые настройки как на главном сайте */
+/* Базовые настройки */
 body {
     margin: 0;
     font-family: system-ui, -apple-system, sans-serif;
@@ -6,7 +6,6 @@ body {
     background-color: #020617;
 }
 
-/* Фиксированный фон гор на всю страницу */
 .page-background {
     position: fixed;
     top: 0;
@@ -19,7 +18,6 @@ body {
     z-index: -2;
 }
 
-/* Полупрозрачное затемнение поверх гор */
 .page-overlay {
     position: fixed;
     top: 0;
@@ -30,14 +28,11 @@ body {
     z-index: -1;
 }
 
-/* Сетка карточек в стиле хаба */
+/* Сетка карточек */
 .destinations-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
 .destination-card {
@@ -91,14 +86,9 @@ body {
     cursor: pointer;
     font-weight: 600;
     color: #020617;
-    transition: background 0.2s;
 }
 
-.select-btn:hover {
-    background-color: #0ea5e9;
-}
-
-/* Модальное окно и слайдер под дизайн хаба */
+/* Модальное окно и слайдер */
 .modal {
     position: fixed;
     top: 0;
@@ -127,7 +117,6 @@ body {
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
 }
 
-/* Слайдер */
 .modal-slider {
     position: relative;
     width: 100%;
