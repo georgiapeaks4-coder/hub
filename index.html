@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Активный отдых и приключения в Грузии</title>
-    <!-- Подключаем Tailwind CSS для красивого дизайна -->
+    <title>Georgia Peaks - Активный отдых в горах</title>
+    <!-- Подключаем Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-emerald-500 selection:text-white">
@@ -15,22 +15,26 @@
             <div class="text-xl font-black tracking-wider uppercase text-white">
                 Georgia <span class="text-emerald-500">Peaks</span>
             </div>
-            <a href="https://t.me/ваш_аккаунт" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-5 py-2.5 rounded-xl transition-all shadow-lg shadow-emerald-900/20">
-                Связаться с нами
-            </a>
+
+            <!-- ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКОВ -->
+            <div class="flex items-center gap-2 bg-slate-900 p-1.5 rounded-xl border border-slate-800">
+                <button onclick="changeLanguage('ru')" id="btn-ru" class="px-3 py-1 rounded-lg text-sm font-semibold bg-emerald-600 text-white transition-all">RU</button>
+                <button onclick="changeLanguage('en')" id="btn-en" class="px-3 py-1 rounded-lg text-sm font-semibold text-slate-400 hover:text-white transition-all">EN</button>
+                <button onclick="changeLanguage('pl')" id="btn-pl" class="px-3 py-1 rounded-lg text-sm font-semibold text-slate-400 hover:text-white transition-all">PL</button>
+            </div>
         </div>
     </header>
 
     <!-- Главный экран (Hero) -->
     <section class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden border-b border-slate-900">
         <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
-            <span class="inline-block bg-emerald-500/10 text-emerald-400 font-semibold px-4 py-1.5 rounded-full text-sm mb-6 border border-emerald-500/20">
+            <span class="inline-block bg-emerald-500/10 text-emerald-400 font-semibold px-4 py-1.5 rounded-full text-sm mb-6 border border-emerald-500/20" data-i18n="badge">
                 🏔️ Туры и приключения под ключ
             </span>
-            <h1 class="text-4xl md:text-6xl font-black tracking-tight text-white mb-6 max-w-4xl mx-auto leading-tight">
-                Откройте для себя настоящий <span class="text-emerald-400">активный отдых</span> в горах Грузии
+            <h1 class="text-4xl md:text-6xl font-black tracking-tight text-white mb-6 max-w-4xl mx-auto leading-tight" data-i18n="hero_title">
+                Откройте для себя настоящий активный отдых в горах Грузии
             </h1>
-            <p class="text-lg md:text-xl text-slate-400 mb-10 max-w-2xl mx-auto">
+            <p class="text-lg md:text-xl text-slate-400 mb-10 max-w-2xl mx-auto" data-i18n="hero_desc">
                 Профессиональные инструкторы, сертифицированные горные гиды и незабываемые эмоции. Выбирайте направление ниже!
             </p>
         </div>
@@ -38,14 +42,12 @@
 
     <!-- Секция услуг (Каталог) -->
     <section class="py-20 max-w-7xl mx-auto px-6">
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
-            <div>
-                <h2 class="text-3xl font-bold text-white mb-2">Наши направления</h2>
-                <p class="text-slate-400">Выберите интересующую вас услугу для подробной информации</p>
-            </div>
+        <div class="mb-12">
+            <h2 class="text-3xl font-bold text-white mb-2" data-i18n="services_title">Наши направления</h2>
+            <p class="text-slate-400" data-i18n="services_subtitle">Выберите интересующую вас услугу для подробной информации</p>
         </div>
 
-        <!-- СЕТКА УСЛУГ (Сюда легко добавлять новые карточки) -->
+        <!-- СЕТКА УСЛУГ -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
             <!-- 1. Лыжи и сноуборд -->
@@ -53,16 +55,14 @@
                 <div>
                     <div class="h-56 overflow-hidden relative">
                         <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?q=80&w=800&auto=format&fit=crop" alt="Лыжи" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent opacity-60"></div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-2xl font-bold text-white mb-2">Лыжи и сноуборд</h3>
-                        <p class="text-slate-400 mb-6 text-sm leading-relaxed">Обучение с нуля и улучшение техники катания в Гудаури. Индивидуальный подход для взрослых и детей.</p>
+                        <h3 class="text-2xl font-bold text-white mb-2" data-i18n="ski_title">Лыжи и сноуборд</h3>
+                        <p class="text-slate-400 mb-6 text-sm leading-relaxed" data-i18n="ski_desc">Обучение с нуля и улучшение техники катания в Гудаури. Индивидуальный подход для взрослых и детей.</p>
                     </div>
                 </div>
                 <div class="px-6 pb-6">
-                    <!-- Ссылка ведет на ваш уже готовый лендинг по лыжам -->
-                    <a href="https://gudauri-ten.vercel.app" target="_blank" class="block text-center bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-3 rounded-xl transition-all shadow-lg shadow-emerald-900/20">
+                    <a href="https://gudauri-ten.vercel.app" target="_blank" class="block text-center bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-3 rounded-xl transition-all shadow-lg shadow-emerald-900/20" data-i18n="btn_details">
                         Перейти к услуге
                     </a>
                 </div>
@@ -72,52 +72,118 @@
             <div class="bg-slate-900/80 rounded-2xl overflow-hidden border border-slate-800 shadow-xl group hover:border-emerald-500/50 transition-all duration-300 flex flex-col justify-between">
                 <div>
                     <div class="h-56 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=800&auto=format&fit=crop" alt="Горный гид" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent opacity-60"></div>
+                        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=800&auto=format&fit=crop" alt="Гид" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-2xl font-bold text-white mb-2">Горный гид</h3>
-                        <p class="text-slate-400 mb-6 text-sm leading-relaxed">Безопасное сопровождение по лучшим маршрутам Грузии, треккинг, фрирайд и поездки по живописным локациям.</p>
+                        <h3 class="text-2xl font-bold text-white mb-2" data-i18n="guide_title">Горный гид</h3>
+                        <p class="text-slate-400 mb-6 text-sm leading-relaxed" data-i18n="guide_desc">Безопасное сопровождение по лучшим маршрутам Грузии, треккинг и поездки по живописным локациям.</p>
                     </div>
                 </div>
                 <div class="px-6 pb-6">
-                    <!-- Ссылка на будущий сайт гида -->
-                    <a href="#" class="block text-center bg-slate-800 hover:bg-slate-700 text-white font-semibold py-3 rounded-xl transition-all border border-slate-700">
+                    <a href="#" class="block text-center bg-slate-800 text-slate-400 font-semibold py-3 rounded-xl border border-slate-700 cursor-not-allowed" data-i18n="btn_soon">
                         Скоро открытие
                     </a>
                 </div>
             </div>
 
-            <!-- 3. Полеты на параплане -->
+            <!-- 3. Параплан -->
             <div class="bg-slate-900/80 rounded-2xl overflow-hidden border border-slate-800 shadow-xl group hover:border-emerald-500/50 transition-all duration-300 flex flex-col justify-between">
                 <div>
                     <div class="h-56 overflow-hidden relative">
                         <img src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?q=80&w=800&auto=format&fit=crop" alt="Параплан" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent opacity-60"></div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-2xl font-bold text-white mb-2">Полеты на параплане</h3>
-                        <p class="text-slate-400 mb-6 text-sm leading-relaxed">Незабываемые полеты в тандеме с опытными пилотами. Увидите грандиозные горные ущелья с высоты птичьего полета.</p>
+                        <h3 class="text-2xl font-bold text-white mb-2" data-i18n="para_title">Полеты на параплане</h3>
+                        <p class="text-slate-400 mb-6 text-sm leading-relaxed" data-i18n="para_desc">Незабываемые полеты в тандеме с пилотами. Увидите грандиозные ущелья с высоты птичьего полета.</p>
                     </div>
                 </div>
                 <div class="px-6 pb-6">
-                    <!-- Ссылка на будущий сайт параплана -->
-                    <a href="#" class="block text-center bg-slate-800 hover:bg-slate-700 text-white font-semibold py-3 rounded-xl transition-all border border-slate-700">
+                    <a href="#" class="block text-center bg-slate-800 text-slate-400 font-semibold py-3 rounded-xl border border-slate-700 cursor-not-allowed" data-i18n="btn_soon">
                         Скоро открытие
                     </a>
                 </div>
             </div>
-
-            <!-- 💡 БУДУЩАЯ 4-Я УСЛУГА (Пример того, как легко добавить новую) -->
-            <!-- Просто скопируйте любой блок выше, вставьте сюда и поменяйте текст/ссылку -->
 
         </div>
     </section>
 
     <!-- Подвал -->
     <footer class="border-t border-slate-900 bg-slate-950 py-10 text-center text-slate-500 text-sm">
-        <p>© 2026 Georgia Peaks. Все права защищены.</p>
+        <p>© 2026 Georgia Peaks. <span data-i18n="footer_rights">Все права защищены.</span></p>
     </footer>
 
+    <!-- СКРИПТ ПЕРЕКЛЮЧЕНИЯ ЯЗЫКОВ -->
+    <script>
+        const translations = {
+            ru: {
+                badge: "🏔️ Туры и приключения под ключ",
+                hero_title: "Откройте для себя настоящий активный отдых в горах Грузии",
+                hero_desc: "Профессиональные инструкторы, сертифицированные горные гиды и незабываемые эмоции. Выбирайте направление ниже!",
+                services_title: "Наши направления",
+                services_subtitle: "Выберите интересующую вас услугу для подробной информации",
+                ski_title: "Лыжи и сноуборд",
+                ski_desc: "Обучение с нуля и улучшение техники катания в Гудаури. Индивидуальный подход для взрослых и детей.",
+                guide_title: "Горный гид",
+                guide_desc: "Безопасное сопровождение по лучшим маршрутам Грузии, треккинг и поездки по живописным локациям.",
+                para_title: "Полеты на параплане",
+                para_desc: "Незабываемые полеты в тандеме с пилотами. Увидите грандиозные ущелья с высоты птичьего полета.",
+                btn_details: "Перейти к услуге",
+                btn_soon: "Скоро открытие",
+                footer_rights: "Все права защищены."
+            },
+            en: {
+                badge: "🏔️ Turnkey Tours & Adventures",
+                hero_title: "Discover real active recreation in the mountains of Georgia",
+                hero_desc: "Professional instructors, certified mountain guides, and unforgettable emotions. Choose your activity below!",
+                services_title: "Our Services",
+                services_subtitle: "Choose a service you are interested in for detailed information",
+                ski_title: "Skiing & Snowboarding",
+                ski_desc: "Lessons from scratch and riding technique improvement in Gudauri. Individual approach for adults and kids.",
+                guide_title: "Mountain Guide",
+                guide_desc: "Safe accompaniment along the best routes of Georgia, trekking, and trips to scenic locations.",
+                para_title: "Paragliding",
+                para_desc: "Unforgettable tandem flights with experienced pilots. See grand mountain gorges from a bird's eye view.",
+                btn_details: "Go to service",
+                btn_soon: "Coming soon",
+                footer_rights: "All rights reserved."
+            },
+            pl: {
+                badge: "🏔️ Wycieczki i przygody",
+                hero_title: "Odkryj prawdziwy aktywny wypoczynek w górach Gruzji",
+                hero_desc: "Profesjonalni instruktorzy, certyfikowani przewodnicy górscy i niezapomniane emocje. Wybierz kierunek poniżej!",
+                services_title: "Nasze usługi",
+                services_subtitle: "Wybierz interesującą Cię usługę, aby uzyskać szczegółowe informacje",
+                ski_title: "Narty i snowboard",
+                ski_desc: "Nauka od podstaw i doskonalenie techniki jazdy w Gudauri. Indywidualne podejście dla dorosłych i dzieci.",
+                guide_title: "Przewodnik górski",
+                guide_desc: "Bezpieczna asysta na najlepszych szlakach Gruzji, trekking i wycieczki w malownicze miejsca.",
+                para_title: "Loty paralotnią",
+                para_desc: "Niezapomniane loty w tandemie z doświadczonymi pilotami. Zobacz wspaniałe wąwozy górskie z lotu ptaka.",
+                btn_details: "Przejdź do usługi",
+                btn_soon: "Wkrótce otwarte",
+                footer_rights: "Wszelki prawa zastrzeżone."
+            }
+        };
+
+        function changeLanguage(lang) {
+            // Меняем тексты на странице
+            document.querySelectorAll("[data-i18n]").forEach(element => {
+                const key = element.getAttribute("data-i18n");
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            // Подсветка активной кнопки языка
+            ['ru', 'en', 'pl'].forEach(l => {
+                const btn = document.getElementById(`btn-${l}`);
+                if (l === lang) {
+                    btn.className = "px-3 py-1 rounded-lg text-sm font-semibold bg-emerald-600 text-white transition-all";
+                } else {
+                    btn.className = "px-3 py-1 rounded-lg text-sm font-semibold text-slate-400 hover:text-white transition-all";
+                }
+            });
+        }
+    </script>
 </body>
 </html>
