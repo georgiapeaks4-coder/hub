@@ -6,33 +6,49 @@
     <title>Грузия: Туры и Путеводитель</title>
     <!-- Стили Flatpickr -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <!-- Ссылку на css обновили под вашу структуру папок -->
+    <!-- Общие стили хаба для единой айдентики -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Локальные стили для сетки туров и модалки -->
     <link rel="stylesheet" href="css/guide.css">
 </head>
 <body>
 
-    <header class="guide-header">
-        <!-- Переключатель языков -->
-        <div class="lang-switcher">
-            <button class="lang-btn active" data-lang="ru">RU</button>
-            <button class="lang-btn" data-lang="en">EN</button>
-            <button class="lang-btn" data-lang="pl">PL</button>
+    <!-- Шапка идентичная основному хабу -->
+    <header class="site-header">
+        <div class="header-left">
+            <span class="logo">GEORGIA PEAKS</span>
+            <span class="weather-widget">Тбилиси • 5 октября 2026 г. | ☀️ 13°C</span>
         </div>
-        
+        <div class="header-right">
+            <a href="https://wa.me/995000000000" target="_blank" class="wa-header-btn">
+                <span>Написать в WhatsApp</span>
+            </a>
+            <div class="lang-switcher">
+                <button class="lang-btn active" data-lang="ru">RU</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="pl">PL</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Заголовок страницы туров -->
+    <section class="guide-hero">
+        <div class="badge">🌲 Туры и приключения под ключ</div>
         <h1 id="headerTitle">Авторские туры по Грузии</h1>
         <p id="headerSubtitle">Выберите направление, дату и забронируйте незабываемую поездку в WhatsApp</p>
-    </header>
+    </section>
 
     <main class="container">
         <div class="destinations-grid" id="destinationsGrid"></div>
     </main>
 
-    <!-- Модальное окно -->
+    <!-- Модальное окно со слайдером -->
     <div id="bookingModal" class="modal" style="display: none;">
         <div class="modal-content">
             <span class="close-btn" id="closeModal">&times;</span>
             <h2 id="modalTitle">Название направления</h2>
             
+            <!-- Контейнер слайдера для фото -->
             <div class="modal-gallery" id="modalGallery"></div>
 
             <p id="modalDesc" class="modal-desc"></p>
@@ -53,7 +69,7 @@
         </div>
     </div>
 
-    <!-- Скрипты календаря, локализации и ваш JS из папки js/ -->
+    <!-- Скрипты -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ru.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/pl.js"></script>
