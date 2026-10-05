@@ -20,7 +20,7 @@
                 <div class="hidden md:flex items-center gap-3 text-xs text-slate-400 bg-slate-900/60 px-3 py-1.5 rounded-lg border border-slate-800">
                     <span id="current-date">Тбилиси</span>
                     <span class="text-slate-600">|</span>
-                    <span id="tbilisi-weather" class="text-emerald-400 font-medium">Загрузка погоды...</span>
+                    <span id="tbilisi-weather" class="text-emerald-400 font-medium">Загрузка...</span>
                 </div>
             </div>
 
@@ -35,27 +35,28 @@
 
     <!-- Главный экран (Hero) с фоном величественных гор Казбеги -->
     <section class="relative pt-40 pb-28 md:pt-52 md:pb-36 overflow-hidden border-b border-slate-900">
-        <!-- Фоновое изображение гор Казбеги с темным градиентом для читаемости текста -->
-        <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1562601579-599dec564e0e?q=80&w=1920&auto=format&fit=crop" alt="Горы Казбеги Грузия" class="w-full h-full object-cover object-center scale-105 filter brightness-75">
-            <div class="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/60 to-slate-950"></div>
+        <!-- Абсолютное позиционирование фонового фото гор -->
+        <div class="absolute inset-0 w-full h-full z-0">
+            <img src="https://images.unsplash.com/photo-1562601579-599dec564e0e?q=80&w=1920&auto=format&fit=crop" alt="Горы Казбеги Грузия" class="w-full h-full object-cover object-center">
+            <!-- Темный градиент поверх фото, чтобы текст отлично читался -->
+            <div class="absolute inset-0 bg-slate-950/75 backdrop-blur-[2px]"></div>
         </div>
 
         <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
-            <span class="inline-block bg-emerald-500/20 text-emerald-300 font-semibold px-4 py-1.5 rounded-full text-sm mb-6 border border-emerald-500/30 backdrop-blur-sm" data-i18n="badge">
+            <span class="inline-block bg-emerald-500/20 text-emerald-300 font-semibold px-4 py-1.5 rounded-full text-sm mb-6 border border-emerald-500/30 backdrop-blur-md shadow-lg" data-i18n="badge">
                 🏔️ Туры и приключения под ключ
             </span>
-            <h1 class="text-4xl md:text-6xl font-black tracking-tight text-white mb-6 max-w-4xl mx-auto leading-tight drop-shadow-md" data-i18n="hero_title">
+            <h1 class="text-4xl md:text-6xl font-black tracking-tight text-white mb-6 max-w-4xl mx-auto leading-tight drop-shadow-lg" data-i18n="hero_title">
                 Откройте для себя настоящий активный отдых в горах Грузии
             </h1>
-            <p class="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl mx-auto drop-shadow" data-i18n="hero_desc">
+            <p class="text-lg md:text-xl text-slate-200 mb-10 max-w-2xl mx-auto drop-shadow" data-i18n="hero_desc">
                 Профессиональные инструкторы, местные гиды и незабываемые эмоции. Выбирайте направление ниже!
             </p>
         </div>
     </section>
 
     <!-- Секция услуг (Каталог) -->
-    <section class="py-20 max-w-7xl mx-auto px-6">
+    <section class="py-20 max-w-7xl mx-auto px-6 relative z-10">
         <div class="mb-12">
             <h2 class="text-3xl font-bold text-white mb-2" data-i18n="services_title">Наши направления</h2>
             <p class="text-slate-400" data-i18n="services_subtitle">Выберите интересующую вас услугу для подробной информации</p>
@@ -65,7 +66,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
             <!-- 1. Лыжи и сноуборд -->
-            <div class="bg-slate-900/80 rounded-2xl overflow-hidden border border-slate-800 shadow-xl group hover:border-emerald-500/50 transition-all duration-300 flex flex-col justify-between">
+            <div class="bg-slate-900/90 backdrop-blur-md rounded-2xl overflow-hidden border border-slate-800 shadow-xl group hover:border-emerald-500/50 transition-all duration-300 flex flex-col justify-between">
                 <div>
                     <div class="h-56 overflow-hidden relative">
                         <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?q=80&w=800&auto=format&fit=crop" alt="Лыжи" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
@@ -83,7 +84,7 @@
             </div>
 
             <!-- 2. Проводник и местный гид -->
-            <div class="bg-slate-900/80 rounded-2xl overflow-hidden border border-slate-800 shadow-xl group hover:border-emerald-500/50 transition-all duration-300 flex flex-col justify-between">
+            <div class="bg-slate-900/90 backdrop-blur-md rounded-2xl overflow-hidden border border-slate-800 shadow-xl group hover:border-emerald-500/50 transition-all duration-300 flex flex-col justify-between">
                 <div>
                     <div class="h-56 overflow-hidden relative">
                         <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=800&auto=format&fit=crop" alt="Гид" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
@@ -101,7 +102,7 @@
             </div>
 
             <!-- 3. Полеты на параплане -->
-            <div class="bg-slate-900/80 rounded-2xl overflow-hidden border border-slate-800 shadow-xl group hover:border-emerald-500/50 transition-all duration-300 flex flex-col justify-between">
+            <div class="bg-slate-900/90 backdrop-blur-md rounded-2xl overflow-hidden border border-slate-800 shadow-xl group hover:border-emerald-500/50 transition-all duration-300 flex flex-col justify-between">
                 <div>
                     <div class="h-56 overflow-hidden relative">
                         <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800&auto=format&fit=crop" alt="Параплан в горах" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
@@ -122,20 +123,17 @@
     </section>
 
     <!-- Подвал -->
-    <footer class="border-t border-slate-900 bg-slate-950 py-10 text-center text-slate-500 text-sm">
+    <footer class="border-t border-slate-900 bg-slate-950 py-10 text-center text-slate-500 text-sm relative z-10">
         <p>© 2026 Georgia Peaks. <span data-i18n="footer_rights">Все права защищены.</span></p>
     </footer>
 
     <!-- СКРИПТЫ: ЯЗЫКИ, ДАТА И ПОГОДА -->
     <script>
-        // Автоматическое отображение даты и погоды в Тбилиsi
         async function loadTbilisiInfo() {
-            // Дата
             const options = { day: 'numeric', month: 'long', year: 'numeric' };
             const today = new Date().toLocaleDateString('ru-RU', options);
             document.getElementById('current-date').textContent = `Тбилиси • ${today}`;
 
-            // Погода (бесплатное API Open-Meteo для Тбилиси)
             try {
                 const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=41.7151&current_weather=true');
                 const data = await response.json();
@@ -149,10 +147,9 @@
         }
         loadTbilisiInfo();
 
-        // Перевод сайта
         const translations = {
             ru: {
-                badge: "🏔️️ Туры и приключения под ключ",
+                badge: "🏔️ Туры и приключения под ключ",
                 hero_title: "Откройте для себя настоящий активный отдых в горах Грузии",
                 hero_desc: "Профессиональные инструкторы, местные гиды и незабываемые эмоции. Выбирайте направление ниже!",
                 services_title: "Наши направления",
@@ -221,4 +218,3 @@
     </script>
 </body>
 </html>
-
