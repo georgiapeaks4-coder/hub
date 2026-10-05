@@ -4,98 +4,179 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Грузия: Туры и Путеводитель</title>
-    <!-- Стили Flatpickr -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <!-- Общие стили хаба -->
-    <link rel="stylesheet" href="css/style.css">
-    <!-- Локальные стили сетки туров -->
-    <link rel="stylesheet" href="css/guide.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            color: #f1f5f9;
+            background-color: #020617;
+            min-height: 100vh;
+        }
+        .page-background {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background-image: url('images/kazbegi-bg.jpg');
+            background-size: cover; background-position: center; z-index: -2;
+        }
+        .page-overlay {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(2, 6, 23, 0.85); z-index: -1;
+        }
+        .site-header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 30px; background: rgba(2, 6, 23, 0.9);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .header-left, .header-right { display: flex; align-items: center; gap: 20px; }
+        .logo { font-weight: 700; font-size: 20px; color: #ffffff; text-decoration: none; }
+        .weather-widget { color: #94a3b8; font-size: 14px; }
+        .wa-header-btn {
+            background-color: #22c55e; color: #ffffff; padding: 8px 16px;
+            border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 14px;
+        }
+        .wa-header-btn:hover { background-color: #16a34a; }
+        .lang-switcher { display: flex; gap: 4px; }
+        .lang-btn {
+            background: transparent; border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px;
+        }
+        .lang-btn.active, .lang-btn:hover { background: #38bdf8; border-color: #38bdf8; color: #020617; font-weight: 600; }
+        .main-container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        .page-header-text { margin-bottom: 30px; }
+        .page-header-text h1 { font-size: 32px; margin-bottom: 10px; }
+        .page-header-text p { color: #94a3b8; font-size: 16px; }
+        .destinations-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px;
+        }
+        .destination-card {
+            background: rgba(30, 41, 59, 0.75); border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px; overflow: hidden; display: flex; flex-direction: column;
+        }
+        .card-img-wrapper { width: 100%; height: 180px; background-color: #000; }
+        .card-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+        .card-body { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
+        .card-body h3 { margin-bottom: 8px; font-size: 18px; }
+        .card-body p { margin-bottom: 20px; font-size: 14px; color: #94a3b8; flex-grow: 1; }
+        .select-btn {
+            background-color: #38bdf8; border: none; padding: 10px 16px;
+            border-radius: 6px; font-weight: 600; color: #020617; text-decoration: none; text-align: center;
+        }
+        .select-btn:hover { background-color: #0ea5e9; }
+        .back-link { display: inline-block; margin-bottom: 20px; color: #38bdf8; text-decoration: none; font-size: 14px; }
+        .back-link:hover { text-decoration: underline; }
+    </style>
 </head>
 <body>
     <div class="page-background"></div>
     <div class="page-overlay"></div>
 
-    <!-- Шапка идентичная главному хабу -->
     <header class="site-header">
         <div class="header-left">
-            <span class="logo">GEORGIA PEAKS</span>
-            <span class="weather-widget">Тбилиси • 5 октября 2026 г. | ☀️️ 13°C</span>
+            <a href="index.html" class="logo">GEORGIA PEAKS</a>
+            <span class="weather-widget">Тбилиси • 5 октября 2026 г. | ☀️ 13°C</span>
         </div>
         <div class="header-right">
-            <a href="https://wa.me/+48515979713" target="_blank" class="wa-header-btn">
-                <span>Написать в WhatsApp</span>
-            </a>
+            <a href="https://wa.me/+48515979713" target="_blank" class="wa-header-btn" data-i18n="wa-btn">Написать в WhatsApp</a>
             <div class="lang-switcher">
-                <button class="lang-btn active" data-lang="ru">RU</button>
-                <button class="lang-btn" data-lang="en">EN</button>
-                <button class="lang-btn" data-lang="pl">PL</button>
+                <button class="lang-btn active" onclick="setLang('ru')">RU</button>
+                <button class="lang-btn" onclick="setLang('en')">EN</button>
+                <button class="lang-btn" onclick="setLang('pl')">PL</button>
             </div>
         </div>
     </header>
 
-    <!-- Основной контент -->
     <main class="main-container">
+        <a href="index.html" class="live-link" data-i18n="back">← На главную хаба</a>
         <div class="page-header-text">
-            <h1>Авторские туры по Грузии</h1>
-            <p>Выберите направление, дату и забронируйте незабываемую поездку в WhatsApp или на почту: georgiapeaks4@gmail.com</p>
+            <h1 data-i18n="title">Авторские туры по Грузии</h1>
+            <p data-i18n="subtitle">Выберите направление, дату и забронируйте незабываемую поездку в WhatsApp или на почту: georgiapeaks4@gmail.com</p>
         </div>
 
-        <!-- Сетка карточек с правильным путем к папке images/guide/ -->
-        <div class="destinations-grid" id="destinations-grid">
+        <div class="destinations-grid">
             <div class="destination-card">
-                <div class="card-img-wrapper">
-                    <img src="images/guide/tbilisi.jpg" alt="Тбилиси">
-                </div>
+                <div class="card-img-wrapper"><img src="images/guide/tbilisi.jpg" alt="Тбилиси"></div>
                 <div class="card-body">
                     <h3>Тбилиси</h3>
-                    <p>Серные бани, старый город, серпантины улиц и атмосфера вечного праздника.</p>
-                    <a href="https://wa.me/+48515979713" target="_blank" class="select-btn">Выбрать тур</a>
+                    <p data-i18n="tbilisi">Серные бани, старый город, серпантины улиц и атмосфера вечного праздника.</p>
+                    <a href="https://wa.me/+48515979713" target="_blank" class="select-btn" data-i18n="btn">Выбрать тур</a>
                 </div>
             </div>
             <div class="destination-card">
-                <div class="card-img-wrapper">
-                    <img src="images/guide/mtskheta.jpg" alt="Мцхета">
-                </div>
+                <div class="card-img-wrapper"><img src="images/guide/mtskheta.jpg" alt="Мцхета"></div>
                 <div class="card-body">
                     <h3>Мцхета</h3>
-                    <p>Древняя столица, слияние рек, виды с холма у храма Джвари.</p>
-                    <a href="https://wa.me/+48515979713" target="_blank" class="select-btn">Выбрать тур</a>
+                    <p data-i18n="mtskheta">Древняя столица, слияние рек, виды с холма у храма Джвари.</p>
+                    <a href="https://wa.me/+48515979713" target="_blank" class="select-btn" data-i18n="btn">Выбрать тур</a>
                 </div>
             </div>
             <div class="destination-card">
-                <div class="card-img-wrapper">
-                    <img src="images/guide/kutaisi.jpg" alt="Кутаиси">
-                </div>
+                <div class="card-img-wrapper"><img src="images/guide/kutaisi.jpg" alt="Кутаиси"></div>
                 <div class="card-body">
                     <h3>Кутаиси</h3>
-                    <p>Колоритный южный город, каньоны и подземные пещеры Прометея.</p>
-                    <a href="https://wa.me/+48515979713" target="_blank" class="select-btn">Выбрать тур</a>
+                    <p data-i18n="kutaisi">Колоритный южный город, каньоны и подземные пещеры Прометея.</p>
+                    <a href="https://wa.me/+48515979713" target="_blank" class="select-btn" data-i18n="btn">Выбрать тур</a>
                 </div>
             </div>
             <div class="destination-card">
-                <div class="card-img-wrapper">
-                    <img src="images/guide/borjomi.jpg" alt="Боржоми">
-                </div>
+                <div class="card-img-wrapper"><img src="images/guide/borjomi.jpg" alt="Боржоми"></div>
                 <div class="card-body">
                     <h3>Боржоми</h3>
-                    <p>Хвойный воздух, прохлада ущелья и та самая минералка из источника.</p>
-                    <a href="https://wa.me/+48515979713" target="_blank" class="select-btn">Выбрать тур</a>
+                    <p data-i18n="borjomi">Хвойный воздух, прохлада ущелья и та самая минералка из источника.</p>
+                    <a href="https://wa.me/+48515979713" target="_blank" class="select-btn" data-i18n="btn">Выбрать тур</a>
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- Модальное окно -->
-    <div id="tour-modal" class="modal" style="display: none;">
-        <div class="modal-content">
-            <span id="close-modal" style="position: absolute; top: 15px; right: 20px; font-size: 24px; cursor: pointer; color: #fff;">&times;</span>
-            <div id="modal-body-content"></div>
-        </div>
-    </div>
+    <script>
+        const dict = {
+            ru: {
+                wa: "Написать в WhatsApp", back: "← На главную хаба",
+                title: "Авторские туры по Грузии",
+                subtitle: "Выберите направление, дату и забронируйте незабываемую поездку в WhatsApp или на почту: georgiapeaks4@gmail.com",
+                tbilisi: "Серные бани, старый город, серпантины улиц и атмосфера вечного праздника.",
+                mtskheta: "Древняя столица, слияние рек, виды с холма у храма Джвари.",
+                kutaisi: "Колоритный южный город, каньоны и подземные пещеры Прометея.",
+                borjomi: "Хвойный воздух, прохлада ущелья и та самая минералка из источника.",
+                btn: "Выбрать тур"
+            },
+            en: {
+                wa: "Write on WhatsApp", back: "← Back to Hub",
+                title: "Author's Tours in Georgia",
+                subtitle: "Choose a destination, date and book an unforgettable trip via WhatsApp or email: georgiapeaks4@gmail.com",
+                tbilisi: "Sulfur baths, old town, winding streets and the atmosphere of an eternal holiday.",
+                mtskheta: "Ancient capital, confluence of rivers, views from the hill near Jvari monastery.",
+                kutaisi: "Colorful southern city, canyons and Prometheus underground caves.",
+                borjomi: "Pine air, gorge coolness and that very mineral water from the spring.",
+                btn: "Select Tour"
+            },
+            pl: {
+                wa: "Napisz na WhatsApp", back: "← Powrót do Hubu",
+                title: "Autorskie wycieczki po Gruzji",
+                subtitle: "Wybierz kierunek, datę i zarezerwuj niezapomnianą podróż przez WhatsApp lub e-mail: georgiapeaks4@gmail.com",
+                tbilisi: "Łaźnie siarkowe, stare miasto, kręte uliczki i atmosfera wiecznego święta.",
+                mtskheta: "Starożytna stolica, ujście rzek, widoki ze wzgórza koło klasztoru Dżwari.",
+                kutaisi: "Kolorowe południowe miasto, kaniony i podziemne jaskinie Prometeusza.",
+                borjomi: "Powietrze sosnowe, chłód wąwozu i ta słynna woda mineralna ze źródła.",
+                btn: "Wybierz wycieczку"
+            }
+        };
 
-    <!-- Скрипты -->
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="js/guide.js"></script>
+        function setLang(lang) {
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const t = dict[lang];
+            document.querySelector('[data-i18n="wa-btn"]').textContent = t.wa;
+            document.querySelector('[data-i18n="back"]').textContent = t.back;
+            document.querySelector('[data-i18n="title"]').textContent = t.title;
+            document.querySelector('[data-i18n="subtitle"]').textContent = t.subtitle;
+            document.querySelector('[data-i18n="tbilisi"]').textContent = t.tbilisi;
+            document.querySelector('[data-i18n="mtskheta"]').textContent = t.mtskheta;
+            document.querySelector('[data-i18n="kutaisi"]').textContent = t.kutaisi;
+            document.querySelector('[data-i18n="borjomi"]').textContent = t.borjomi;
+            document.querySelectorAll('[data-i18n="btn"]').forEach(el => el.textContent = t.btn);
+        }
+    </script>
 </body>
 </html>
 
