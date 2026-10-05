@@ -1,37 +1,65 @@
-/* Общие стили для гида и туров */
+/* Базовые настройки как на главном сайте */
 body {
-    background-color: #121212;
-    color: #ffffff;
-    font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
+    font-family: system-ui, -apple-system, sans-serif;
+    color: #f1f5f9;
+    background-color: #020617;
 }
 
-/* Сетка карточек */
+/* Фиксированный фон гор на всю страницу */
+.page-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../images/kazbegi-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: -2;
+}
+
+/* Полупрозрачное затемнение поверх гор */
+.page-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(2, 6, 23, 0.82);
+    z-index: -1;
+}
+
+/* Сетка карточек в стиле хаба */
 .destinations-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
     padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .destination-card {
-    background: #1e1e1e;
+    background: rgba(30, 41, 59, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     overflow: hidden;
     cursor: pointer;
-    transition: transform 0.2s;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.2s, background 0.2s;
+    backdrop-filter: blur(10px);
 }
 
 .destination-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-4px);
+    background: rgba(30, 41, 59, 0.9);
 }
 
 .card-img-wrapper {
     width: 100%;
-    height: 200px;
+    height: 180px;
     overflow: hidden;
+    background-color: #000;
 }
 
 .card-img-wrapper img {
@@ -41,28 +69,44 @@ body {
 }
 
 .card-body {
-    padding: 15px;
+    padding: 16px;
+}
+
+.card-body h3 {
+    margin: 0 0 8px 0;
+    font-size: 18px;
+}
+
+.card-body p {
+    margin: 0 0 12px 0;
+    font-size: 14px;
+    color: #94a3b8;
 }
 
 .select-btn {
-    background-color: #ffc107;
+    background-color: #38bdf8;
     border: none;
-    padding: 8px 15px;
+    padding: 8px 16px;
     border-radius: 6px;
     cursor: pointer;
-    font-weight: bold;
-    color: #000;
-    margin-top: 10px;
+    font-weight: 600;
+    color: #020617;
+    transition: background 0.2s;
 }
 
-/* Модальное окно и слайдер */
+.select-btn:hover {
+    background-color: #0ea5e9;
+}
+
+/* Модальное окно и слайдер под дизайн хаба */
 .modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.85) !important;
+    background-color: rgba(2, 6, 23, 0.85) !important;
+    backdrop-filter: blur(8px);
     z-index: 9999 !important;
     display: none;
     align-items: center;
@@ -70,19 +114,20 @@ body {
 }
 
 .modal-content {
-    background-color: #1a1a1a !important;
-    color: #ffffff !important;
-    padding: 25px;
-    border-radius: 12px;
+    background-color: #0f172a !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #f1f5f9 !important;
+    padding: 24px;
+    border-radius: 16px;
     width: 90%;
     max-width: 600px;
     max-height: 90vh;
     overflow-y: auto;
     position: relative;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
 }
 
-/* Стили для слайдера внутри модалки */
+/* Слайдер */
 .modal-slider {
     position: relative;
     width: 100%;
