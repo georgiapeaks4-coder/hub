@@ -1,1 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Активный отдых и приключения в Грузии</title>
+    <!-- Подключаем Tailwind CSS для красивого дизайна -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-emerald-500 selection:text-white">
 
+    <!-- Шапка сайта -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/60">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="text-xl font-black tracking-wider uppercase text-white">
+                Georgia <span class="text-emerald-500">Peaks</span>
+            </div>
+            <a href="https://t.me/ваш_аккаунт" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-5 py-2.5 rounded-xl transition-all shadow-lg shadow-emerald-900/20">
+                Связаться с нами
+            </a>
+        </div>
+    </header>
+
+    <!-- Главный экран (Hero) -->
+    <section class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden border-b border-slate-900">
+        <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
+            <span class="inline-block bg-emerald-500/10 text-emerald-400 font-semibold px-4 py-1.5 rounded-full text-sm mb-6 border border-emerald-500/20">
+                🏔️ Туры и приключения под ключ
+            </span>
+            <h1 class="text-4xl md:text-6xl font-black tracking-tight text-white mb-6 max-w-4xl mx-auto leading-tight">
+                Откройте для себя настоящий <span class="text-emerald-400">активный отдых</span> в горах Грузии
+            </h1>
+            <p class="text-lg md:text-xl text-slate-400 mb-10 max-w-2xl mx-auto">
+                Профессиональные инструкторы, сертифицированные горные гиды и незабываемые эмоции. Выбирайте направление ниже!
+            </p>
+        </div>
+    </section>
+
+    <!-- Секция услуг (Каталог) -->
+    <section class="py-20 max-w-7xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+            <div>
+                <h2 class="text-3xl font-bold text-white mb-2">Наши направления</h2>
+                <p class="text-slate-400">Выберите интересующую вас услугу для подробной информации</p>
+            </div>
+        </div>
+
+        <!-- СЕТКА УСЛУГ (Сюда легко добавлять новые карточки) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- 1. Лыжи и сноуборд -->
+            <div class="bg-slate-900/80 rounded-2xl overflow-hidden border border-slate-800 shadow-xl group hover:border-emerald-500/50 transition-all duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?q=80&w=800&auto=format&fit=crop" alt="Лыжи" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent opacity-60"></div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-white mb-2">Лыжи и сноуборд</h3>
+                        <p class="text-slate-400 mb-6 text-sm leading-relaxed">Обучение с нуля и улучшение техники катания в Гудаури. Индивидуальный подход для взрослых и детей.</p>
+                    </div>
+                </div>
+                <div class="px-6 pb-6">
+                    <!-- Ссылка ведет на ваш уже готовый лендинг по лыжам -->
+                    <a href="https://gudauri-ten.vercel.app" target="_blank" class="block text-center bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-3 rounded-xl transition-all shadow-lg shadow-emerald-900/20">
+                        Перейти к услуге
+                    </a>
+                </div>
+            </div>
+
+            <!-- 2. Горный гид -->
+            <div class="bg-slate-900/80 rounded-2xl overflow-hidden border border-slate-800 shadow-xl group hover:border-emerald-500/50 transition-all duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=800&auto=format&fit=crop" alt="Горный гид" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent opacity-60"></div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-white mb-2">Горный гид</h3>
+                        <p class="text-slate-400 mb-6 text-sm leading-relaxed">Безопасное сопровождение по лучшим маршрутам Грузии, треккинг, фрирайд и поездки по живописным локациям.</p>
+                    </div>
+                </div>
+                <div class="px-6 pb-6">
+                    <!-- Ссылка на будущий сайт гида -->
+                    <a href="#" class="block text-center bg-slate-800 hover:bg-slate-700 text-white font-semibold py-3 rounded-xl transition-all border border-slate-700">
+                        Скоро открытие
+                    </a>
+                </div>
+            </div>
+
+            <!-- 3. Полеты на параплане -->
+            <div class="bg-slate-900/80 rounded-2xl overflow-hidden border border-slate-800 shadow-xl group hover:border-emerald-500/50 transition-all duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?q=80&w=800&auto=format&fit=crop" alt="Параплан" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent opacity-60"></div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-white mb-2">Полеты на параплане</h3>
+                        <p class="text-slate-400 mb-6 text-sm leading-relaxed">Незабываемые полеты в тандеме с опытными пилотами. Увидите грандиозные горные ущелья с высоты птичьего полета.</p>
+                    </div>
+                </div>
+                <div class="px-6 pb-6">
+                    <!-- Ссылка на будущий сайт параплана -->
+                    <a href="#" class="block text-center bg-slate-800 hover:bg-slate-700 text-white font-semibold py-3 rounded-xl transition-all border border-slate-700">
+                        Скоро открытие
+                    </a>
+                </div>
+            </div>
+
+            <!-- 💡 БУДУЩАЯ 4-Я УСЛУГА (Пример того, как легко добавить новую) -->
+            <!-- Просто скопируйте любой блок выше, вставьте сюда и поменяйте текст/ссылку -->
+
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer class="border-t border-slate-900 bg-slate-950 py-10 text-center text-slate-500 text-sm">
+        <p>© 2026 Georgia Peaks. Все права защищены.</p>
+    </footer>
+
+</body>
+</html>
